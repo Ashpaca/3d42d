@@ -4,4 +4,4 @@
 
 [node name="meshmap" type="Node3D"]
 
-[node name="MeshInstance3D" parent="." instance=ExtResource("1_xgov1")]
+[node name="grass" parent="." instance=ExtResource("1_xgov1")]

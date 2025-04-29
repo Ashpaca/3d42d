@@ -14,7 +14,7 @@ material = SubResource("StandardMaterial3D_pfsaw")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3p5yw"]
 
-[node name="MeshInstance3D" type="MeshInstance3D"]
+[node name="Grass_Block" type="MeshInstance3D"]
 mesh = SubResource("BoxMesh_venca")
 
 [node name="grass" type="StaticBody3D" parent="."]

@@ -1,15 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://b1mmfg1f5qrip"]
 
-[ext_resource type="MeshLibrary" uid="uid://c5gvpjjhyasup" path="res://meshmap.tres" id="1_siugx"]
+[ext_resource type="MeshLibrary" uid="uid://bdtuumauuqteq" path="res://meshmap.tres" id="1_siugx"]
 [ext_resource type="PackedScene" uid="uid://ckmrhs3cl44wb" path="res://guy.tscn" id="1_w2yyd"]
 
 [node name="Level" type="Node3D"]
 
 [node name="Guy" parent="." instance=ExtResource("1_w2yyd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40056, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.13685, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Guy"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.74544, -0.653047)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.13452, -0.653047)
 projection = 1
 size = 6.71188
 
