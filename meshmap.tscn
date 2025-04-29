@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://3sdf3l6mfbqk"]
+
+[ext_resource type="PackedScene" uid="uid://b1prf4ee4n2o5" path="res://grass.tscn" id="1_xgov1"]
+
+[node name="meshmap" type="Node3D"]
+
+[node name="MeshInstance3D" parent="." instance=ExtResource("1_xgov1")]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckmrhs3cl44wb"]
+
+[ext_resource type="Texture2D" uid="uid://dym4585aujumq" path="res://icon.svg" id="1_wxr73"]
+
+[node name="Guy" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+axis = 1
+transparent = false
+double_sided = false
+texture = ExtResource("1_wxr73")
