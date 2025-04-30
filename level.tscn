@@ -17,22 +17,31 @@ tonemap_mode = 2
 
 [node name="Level" type="Node3D"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 1280.0
+offset_bottom = 678.925
+scale = Vector2(1, 1.414)
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+size = Vector2i(1280, 678)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
 environment = SubResource("Environment_7mid4")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Guy" parent="." instance=ExtResource("1_w2yyd")]
+[node name="Guy" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_w2yyd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.13685, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Guy"]
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/Guy"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 3.13452, 3.3641)
 projection = 1
-size = 6.71188
+size = 9.108
 
-[node name="GridMap" type="GridMap" parent="."]
+[node name="GridMap" type="GridMap" parent="SubViewportContainer/SubViewport"]
 mesh_library = ExtResource("2_yux4f")
 cell_size = Vector3(1, 1, 1)
 data = {
