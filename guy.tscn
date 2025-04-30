@@ -10,7 +10,7 @@ radius = 0.33
 script = ExtResource("1_75l4f")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.701786, -0.5)
 pixel_size = 0.08
 axis = 1
 double_sided = false
