@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1mmfg1f5qrip"]
+[gd_scene load_steps=7 format=3 uid="uid://b1mmfg1f5qrip"]
 
 [ext_resource type="PackedScene" uid="uid://ckmrhs3cl44wb" path="res://guy.tscn" id="1_w2yyd"]
-[ext_resource type="MeshLibrary" uid="uid://cufrpbgsdctaa" path="res://meshL2.tres" id="2_yux4f"]
+[ext_resource type="MeshLibrary" uid="uid://bx8i8pbql0d8l" path="res://meshL2.tres" id="2_yux4f"]
+[ext_resource type="MeshLibrary" uid="uid://p00x8drtp7b3" path="res://meshHalf.tres" id="3_ml0a4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_654ix"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -24,7 +25,9 @@ scale = Vector2(1, 1.414)
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
 size = Vector2i(1280, 678)
+render_target_update_mode = 4
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
 environment = SubResource("Environment_7mid4")
@@ -41,10 +44,18 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 projection = 1
 size = 9.108
 
-[node name="GridMap" type="GridMap" parent="SubViewportContainer/SubViewport"]
+[node name="Full Block GridMap" type="GridMap" parent="SubViewportContainer/SubViewport"]
 mesh_library = ExtResource("2_yux4f")
 cell_size = Vector3(1, 1, 1)
 data = {
-"cells": PackedInt32Array(65535, 65535, 0, 65535, 0, 0, 65535, 1, 0, 0, 1, 0, 0, 0, 0, 0, 65535, 0, 65534, 65535, 0, 65534, 0, 0, 65534, 1, 0, 65534, 2, 0, 65535, 2, 0, 0, 2, 0, 1, 2, 0, 1, 1, 0, 1, 0, 0, 1, 65535, 0, 1, 65534, 0, 0, 65534, 0, 65535, 65534, 0, 65534, 65534, 0, 65533, 65534, 0, 65533, 65535, 0, 65533, 0, 0, 65533, 1, 0, 65533, 2, 0, 65535, 4, 0, 0, 4, 0, 1, 4, 0, 2, 4, 0, 2, 2, 0, 2, 65535, 0, 2, 0, 0, 2, 1, 0, 2, 65534, 0, 2, 65533, 0, 1, 65533, 0, 0, 65533, 0, 65535, 65533, 0, 65534, 65533, 0, 65533, 65533, 0, 65534, 4, 0, 65533, 4, 0, 131070, 3, 1048577, 131071, 3, 1048577, 65536, 3, 1048577, 65537, 3, 1048577, 65538, 3, 1048577, 65538, 4, 0, 65537, 4, 0, 65536, 4, 0, 131071, 4, 0, 131070, 4, 0, 131069, 4, 0, 65538, 65532, 0, 65537, 65532, 0, 65536, 65532, 0, 131071, 65532, 0, 131070, 65532, 0, 131069, 65532, 0, 65539, 2, 0, 65539, 1, 0, 65539, 0, 0, 65539, 65535, 0, 65539, 65534, 0, 65539, 65533, 0, 131068, 65533, 0, 131068, 65534, 0, 131068, 65535, 0, 131068, 0, 0, 131068, 1, 0, 131068, 2, 0, 131069, 3, 1048577, 131070, 65534, 655361, 131071, 65534, 1)
+"cells": PackedInt32Array(65535, 65535, 0, 65535, 0, 0, 65535, 1, 0, 0, 1, 0, 0, 0, 0, 0, 65535, 0, 65534, 65535, 0, 65534, 0, 0, 65534, 1, 0, 65534, 2, 0, 65535, 2, 0, 0, 2, 0, 1, 2, 0, 1, 1, 0, 1, 0, 0, 1, 65535, 0, 1, 65534, 0, 0, 65534, 0, 65535, 65534, 0, 65534, 65534, 0, 65533, 65534, 0, 65533, 65535, 0, 65533, 0, 0, 65533, 1, 0, 65533, 2, 0, 2, 2, 0, 2, 65535, 0, 2, 0, 0, 2, 1, 0, 2, 65534, 0, 2, 65533, 0, 1, 65533, 0, 0, 65533, 0, 65535, 65533, 0, 65534, 65533, 0, 65533, 65533, 0, 131068, 2, 1048576, 131068, 1, 1048576, 131068, 0, 1048576, 131068, 65535, 1048576, 131068, 65534, 1048576, 131068, 65533, 1048576, 131068, 65532, 1048576, 131069, 65532, 1048576, 131070, 65532, 1048576, 131071, 65532, 1048576, 65536, 65532, 1048576, 65537, 65532, 1048576, 65538, 65532, 1048576, 65539, 65532, 1048576, 65539, 65533, 1048576, 65539, 65534, 1048576, 65539, 65535, 1048576, 65539, 0, 1048576, 65539, 1, 1048576, 65539, 2, 1048576, 65538, 5, 1048576, 65537, 5, 1048576, 65536, 5, 1048576, 131071, 5, 1048576, 131070, 5, 1048576, 131069, 5, 1048576)
 }
 metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="Half Block GridMap" type="GridMap" parent="SubViewportContainer/SubViewport"]
+mesh_library = ExtResource("3_ml0a4")
+cell_size = Vector3(1, 0.5, 1)
+data = {
+"cells": PackedInt32Array(196607, 3, 1048576, 196606, 3, 1048576, 196605, 3, 1048576, 131072, 3, 1048576, 131073, 3, 1048576, 131074, 3, 1048576, 262141, 4, 1048577, 262142, 4, 1048577, 262143, 4, 1048577, 196608, 4, 1048577, 196609, 4, 1048577, 196610, 4, 1048577)
+}
+metadata/_editor_floor_ = Vector3(0, 3, 0)

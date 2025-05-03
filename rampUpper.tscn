@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6f4xd8g7icti"]
+
+[ext_resource type="Texture2D" uid="uid://c25le0pfo70h8" path="res://rampTexture.png" id="1_1lg62"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5lna"]
+albedo_texture = ExtResource("1_1lg62")
+albedo_texture_force_srgb = true
+texture_filter = 0
+
+[sub_resource type="PrismMesh" id="PrismMesh_17e2g"]
+material = SubResource("StandardMaterial3D_i5lna")
+left_to_right = 0.0
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_erut0"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0, 0.5, -0.5, 0, -0.5)
+
+[node name="Ramp_Upper_Block" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = SubResource("PrismMesh_17e2g")
+
+[node name="grass" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="grass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("ConvexPolygonShape3D_erut0")
