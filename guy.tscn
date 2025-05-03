@@ -14,7 +14,7 @@ floor_max_angle = 1.0472
 script = ExtResource("1_75l4f")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0269788, -0.0624561, -0.0223786)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03, -0.42, 0)
 pixel_size = 0.08
 double_sided = false
 texture_filter = 0
