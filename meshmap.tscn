@@ -1,7 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://3sdf3l6mfbqk"]
+[gd_scene load_steps=4 format=3 uid="uid://3sdf3l6mfbqk"]
 
 [ext_resource type="PackedScene" uid="uid://b1prf4ee4n2o5" path="res://grass.tscn" id="1_xgov1"]
+[ext_resource type="PackedScene" uid="uid://c0lwpdk770o21" path="res://grassLC.tscn" id="2_jmacy"]
+[ext_resource type="PackedScene" uid="uid://d0um338krkhao" path="res://grassRC.tscn" id="3_j3a2c"]
 
 [node name="meshmap" type="Node3D"]
 
 [node name="Grass_Block" parent="." instance=ExtResource("1_xgov1")]
+
+[node name="Grass_Block_LC" parent="." instance=ExtResource("2_jmacy")]
+
+[node name="Grass_Block_LC2" parent="." instance=ExtResource("3_j3a2c")]

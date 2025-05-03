@@ -5,6 +5,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vwnso"]
 radius = 0.33
+height = 1.35639
 
 [node name="Guy" type="CharacterBody3D"]
 axis_lock_angular_x = true
@@ -14,7 +15,7 @@ floor_max_angle = 1.0472
 script = ExtResource("1_75l4f")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03, -0.42, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03, -0.06, 0)
 pixel_size = 0.08
 double_sided = false
 texture_filter = 0
