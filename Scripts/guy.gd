@@ -4,6 +4,8 @@ extends CharacterBody3D
 const SPEED : float = 5.0
 const JUMP_VELOCITY : float = 4.5
 @onready var animator : AnimationPlayer = $Sprite3D/AnimationPlayer
+@onready var shadowCaster : RayCast3D = $RayCast3D
+@onready var shadow : Sprite3D = $Shadow
 
 func _ready() -> void:
 	animator.play("stand_right")
@@ -29,6 +31,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
 	handleAnimations(input_dir)
+	placeShadow()
 	
 	move_and_slide()
 	
@@ -60,6 +63,7 @@ func handleAnimations(inputVector : Vector2) -> void:
 		else:
 			animator.play("walk_down")
 		
-		
+func placeShadow() -> void:
+	shadow.global_position = shadowCaster.get_collision_point() + Vector3(0, 0.1, 0)
 		
 		

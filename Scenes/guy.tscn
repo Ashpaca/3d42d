@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://ckmrhs3cl44wb"]
+[gd_scene load_steps=15 format=3 uid="uid://ckmrhs3cl44wb"]
 
 [ext_resource type="Script" path="res://Scripts/guy.gd" id="1_75l4f"]
 [ext_resource type="Texture2D" uid="uid://vkv54g0olxr7" path="res://Sprites/GuySpriteSheet.png" id="2_1123v"]
+[ext_resource type="Texture2D" uid="uid://dym4585aujumq" path="res://icon.svg" id="3_v6te3"]
 
 [sub_resource type="Animation" id="Animation_sfghh"]
 resource_name = "walk_right"
@@ -189,3 +190,12 @@ libraries = {
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_vwnso")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, -10, 0)
+
+[node name="Shadow" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.674661, 0)
+pixel_size = 0.0035
+axis = 1
+texture = ExtResource("3_v6te3")
