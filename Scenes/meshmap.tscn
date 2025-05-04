@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://3sdf3l6mfbqk"]
+
+[ext_resource type="PackedScene" uid="uid://b1prf4ee4n2o5" path="res://Scenes/grass.tscn" id="1_mqdm5"]
+[ext_resource type="PackedScene" uid="uid://c0lwpdk770o21" path="res://Scenes/grassLC.tscn" id="2_qcdlw"]
+[ext_resource type="PackedScene" uid="uid://d0um338krkhao" path="res://Scenes/grassRC.tscn" id="3_4yl4l"]
+[ext_resource type="PackedScene" uid="uid://cniuefo7ecj1s" path="res://Scenes/grassUC.tscn" id="4_ppi16"]
+[ext_resource type="PackedScene" uid="uid://balw08mtw5sx7" path="res://Scenes/grassDC.tscn" id="5_uj04o"]
+
+[node name="meshmap" type="Node3D"]
+
+[node name="Grass_Block" parent="." instance=ExtResource("1_mqdm5")]
+
+[node name="Grass_Block_LC" parent="." instance=ExtResource("2_qcdlw")]
+
+[node name="Grass_Block_RC" parent="." instance=ExtResource("3_4yl4l")]
+
+[node name="Grass_Block_UC" parent="." instance=ExtResource("4_ppi16")]
+
+[node name="Grass_Block_DC" parent="." instance=ExtResource("5_uj04o")]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0um338krkhao"]
 
-[ext_resource type="Texture2D" uid="uid://dfpd72sik3h3f" path="res://grassTextureRC.png" id="1_u0py3"]
+[ext_resource type="Texture2D" uid="uid://dfpd72sik3h3f" path="res://textures/grassTextureRC.png" id="1_u0py3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e18bg"]
 shading_mode = 0
@@ -13,7 +13,7 @@ material = SubResource("StandardMaterial3D_e18bg")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cu6ho"]
 
-[node name="Grass_Block_LC" type="MeshInstance3D"]
+[node name="Grass_Block_RC" type="MeshInstance3D"]
 mesh = SubResource("BoxMesh_venca")
 
 [node name="grass" type="StaticBody3D" parent="."]

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c25le0pfo70h8"
-path="res://.godot/imported/rampTexture.png-26486a94bcbf45eb66ab4d3ccdbfa293.ctex"
+path="res://.godot/imported/rampTexture.png-792cdbce226fc4cf8a401ba154273164.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://rampTexture.png"
-dest_files=["res://.godot/imported/rampTexture.png-26486a94bcbf45eb66ab4d3ccdbfa293.ctex"]
+source_file="res://textures/rampTexture.png"
+dest_files=["res://.godot/imported/rampTexture.png-792cdbce226fc4cf8a401ba154273164.ctex"]
 
 [params]
 

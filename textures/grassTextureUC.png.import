@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coyrgowauo2rg"
-path="res://.godot/imported/GuySprite.png-e7ad9aaad815f59106b795869a1765da.ctex"
+uid="uid://dvlt2dg7ihjss"
+path="res://.godot/imported/grassTextureUC.png-8b90fc9861b19e3396880984b53789cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GuySprite.png"
-dest_files=["res://.godot/imported/GuySprite.png-e7ad9aaad815f59106b795869a1765da.ctex"]
+source_file="res://textures/grassTextureUC.png"
+dest_files=["res://.godot/imported/grassTextureUC.png-8b90fc9861b19e3396880984b53789cc.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

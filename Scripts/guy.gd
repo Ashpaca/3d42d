@@ -3,7 +3,10 @@ extends CharacterBody3D
 
 const SPEED : float = 5.0
 const JUMP_VELOCITY : float = 4.5
+@onready var animator : AnimationPlayer = $Sprite3D/AnimationPlayer
 
+func _ready() -> void:
+	animator.play("stand_right")
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -24,11 +27,39 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
+	
+	handleAnimations(input_dir)
+	
 	move_and_slide()
 	
 	for collisionID in range(get_slide_collision_count()):
 		if get_slide_collision(collisionID).get_collider() is RigidBody3D:
 			var body : RigidBody3D = get_slide_collision(collisionID).get_collider() as RigidBody3D
-			body.apply_central_impulse((body.global_position - Vector3(global_position.x, global_position.y - .5, global_position.z)).normalized() * 2)
+			body.apply_central_force((body.global_position - Vector3(global_position.x, global_position.y - .5, global_position.z)).normalized().snapped(Vector3(1, 1, 1)) * 200)
 			
+
+func handleAnimations(inputVector : Vector2) -> void:
+	if inputVector.length_squared() < .1:
+		match animator.current_animation:
+			"walk_left":
+				animator.play("stand_left")
+			"walk_right":
+				animator.play("stand_right")
+			"walk_up":
+				animator.play("stand_up")
+			"walk_down":
+				animator.play("stand_down")
+	elif abs(inputVector[0]) > abs(inputVector[1]):
+		if inputVector[0] > 0:
+			animator.play("walk_right")
+		else:
+			animator.play("walk_left")
+	else:
+		if inputVector[1] > 0:
+			animator.play("walk_up")
+		else:
+			animator.play("walk_down")
+		
+		
+		
+		

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfpd72sik3h3f"
-path="res://.godot/imported/grassTextureRC.png-b100fdb8234db0247b521cecc3b02a65.ctex"
+uid="uid://coyrgowauo2rg"
+path="res://.godot/imported/GuySprite.png-42cc90992985f25325478fc0235e8ae5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://grassTextureRC.png"
-dest_files=["res://.godot/imported/grassTextureRC.png-b100fdb8234db0247b521cecc3b02a65.ctex"]
+source_file="res://Sprites/GuySprite.png"
+dest_files=["res://.godot/imported/GuySprite.png-42cc90992985f25325478fc0235e8ae5.ctex"]
 
 [params]
 

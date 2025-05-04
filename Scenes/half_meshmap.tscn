@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dasbg4qrc8jo8"]
+
+[ext_resource type="PackedScene" uid="uid://cwvblixb2iau5" path="res://Scenes/rampLower.tscn" id="1_dijep"]
+[ext_resource type="PackedScene" uid="uid://c6f4xd8g7icti" path="res://Scenes/rampUpper.tscn" id="2_n2x2g"]
+
+[node name="half meshmap" type="Node3D"]
+
+[node name="Ramp_Lower_Block" parent="." instance=ExtResource("1_dijep")]
+
+[node name="Ramp_Upper_Block" parent="." instance=ExtResource("2_n2x2g")]
