@@ -4,23 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://vkv54g0olxr7" path="res://Sprites/GuySpriteSheet.png" id="2_1123v"]
 [ext_resource type="Texture2D" uid="uid://dym4585aujumq" path="res://icon.svg" id="3_v6te3"]
 
-[sub_resource type="Animation" id="Animation_sfghh"]
-resource_name = "walk_right"
-length = 0.75
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [1, 2, 3]
-}
-
 [sub_resource type="Animation" id="Animation_yingm"]
 length = 0.001
 tracks/0/type = "value"
@@ -36,8 +19,8 @@ tracks/0/keys = {
 "values": [1]
 }
 
-[sub_resource type="Animation" id="Animation_1kc22"]
-resource_name = "stand_right"
+[sub_resource type="Animation" id="Animation_bm0vy"]
+resource_name = "stand_down"
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -49,24 +32,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_1m50p"]
-resource_name = "walk_left"
-length = 0.75
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [5, 6, 7]
+"values": [12]
 }
 
 [sub_resource type="Animation" id="Animation_o37cw"]
@@ -85,8 +51,8 @@ tracks/0/keys = {
 "values": [4]
 }
 
-[sub_resource type="Animation" id="Animation_suqu8"]
-resource_name = "walk_up"
+[sub_resource type="Animation" id="Animation_1kc22"]
+resource_name = "stand_right"
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -95,10 +61,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [9, 10, 11, 10]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_y4bq7"]
@@ -133,8 +99,9 @@ tracks/0/keys = {
 "values": [13, 14, 15, 14]
 }
 
-[sub_resource type="Animation" id="Animation_bm0vy"]
-resource_name = "stand_down"
+[sub_resource type="Animation" id="Animation_1m50p"]
+resource_name = "walk_left"
+length = 0.75
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -143,10 +110,43 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [12]
+"values": [5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_sfghh"]
+resource_name = "walk_right"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_suqu8"]
+resource_name = "walk_up"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 11, 10]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_08vuc"]
