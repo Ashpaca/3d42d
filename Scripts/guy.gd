@@ -6,7 +6,7 @@ const JUMP_VELOCITY : float = 4.5
 @onready var animator : AnimationPlayer = $Sprite3D/AnimationPlayer
 @onready var shadowCaster : RayCast3D = $RayCasts/CenterRay
 @onready var shadow : Sprite3D = $Shadow
-@onready var JumpRays : Array[RayCast3D] = [$RayCasts/CenterRay,$RayCasts/BackRay,$RayCasts/RightRay,$RayCasts/FrontRay,$RayCasts/LeftRay]
+@onready var jumpRays : Array[RayCast3D] = [$RayCasts/CenterRay,$RayCasts/BackRay,$RayCasts/RightRay,$RayCasts/FrontRay,$RayCasts/LeftRay]
 
 func _ready() -> void:
 	animator.play("stand_right")
@@ -75,7 +75,7 @@ func placeShadow() -> void:
 func calculateJump() -> void:
 	var raysOverEdge : Array[RayCast3D] = []
 	var avgPoint : Vector3 = Vector3.ZERO
-	for ray in JumpRays:
+	for ray in jumpRays:
 		if ray.is_colliding() and ((ray.global_position - ray.get_collision_point()).length_squared() > 1 or (ray.global_position - ray.get_collision_point()).length_squared() > 1):
 			raysOverEdge.append(ray)
 			avgPoint += ray.position

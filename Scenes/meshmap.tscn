@@ -1,10 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://3sdf3l6mfbqk"]
+[gd_scene load_steps=17 format=3 uid="uid://3sdf3l6mfbqk"]
 
 [ext_resource type="PackedScene" uid="uid://b1prf4ee4n2o5" path="res://Scenes/grass.tscn" id="1_mqdm5"]
 [ext_resource type="PackedScene" uid="uid://c0lwpdk770o21" path="res://Scenes/grassLC.tscn" id="2_qcdlw"]
 [ext_resource type="PackedScene" uid="uid://d0um338krkhao" path="res://Scenes/grassRC.tscn" id="3_4yl4l"]
 [ext_resource type="PackedScene" uid="uid://cniuefo7ecj1s" path="res://Scenes/grassUC.tscn" id="4_ppi16"]
 [ext_resource type="PackedScene" uid="uid://balw08mtw5sx7" path="res://Scenes/grassDC.tscn" id="5_uj04o"]
+[ext_resource type="PackedScene" uid="uid://bv0qpue7hkkqx" path="res://Scenes/grassCC.tscn" id="6_fmo7d"]
+[ext_resource type="PackedScene" uid="uid://ddkvq6ixh3upr" path="res://Scenes/grassDL.tscn" id="7_dn15m"]
+[ext_resource type="PackedScene" uid="uid://cdki2jmo8e5kw" path="res://Scenes/grassDR.tscn" id="8_6prc5"]
+[ext_resource type="PackedScene" uid="uid://ijh15v0xna2o" path="res://Scenes/grassLR.tscn" id="9_c534r"]
+[ext_resource type="PackedScene" uid="uid://bdmyy2hp20sdu" path="res://Scenes/grassND.tscn" id="10_sc4b8"]
+[ext_resource type="PackedScene" uid="uid://bw1w7gcditr7j" path="res://Scenes/grassNL.tscn" id="11_rv8bj"]
+[ext_resource type="PackedScene" uid="uid://d2cy1k17i5nii" path="res://Scenes/grassNR.tscn" id="12_k20oe"]
+[ext_resource type="PackedScene" uid="uid://ftcjk3hmgyvf" path="res://Scenes/grassNU.tscn" id="13_7gkax"]
+[ext_resource type="PackedScene" uid="uid://ccfplj1imdus2" path="res://Scenes/grassUD.tscn" id="14_kp7pe"]
+[ext_resource type="PackedScene" uid="uid://b600wlkd1qw6e" path="res://Scenes/grassUL.tscn" id="15_ade44"]
+[ext_resource type="PackedScene" uid="uid://dsroynl7bbhmt" path="res://Scenes/grassUR.tscn" id="16_rpqir"]
 
 [node name="meshmap" type="Node3D"]
 
@@ -17,3 +28,25 @@
 [node name="Grass_Block_UC" parent="." instance=ExtResource("4_ppi16")]
 
 [node name="Grass_Block_DC" parent="." instance=ExtResource("5_uj04o")]
+
+[node name="Grass_Block_CC" parent="." instance=ExtResource("6_fmo7d")]
+
+[node name="Grass_Block_DL" parent="." instance=ExtResource("7_dn15m")]
+
+[node name="Grass_Block_DR" parent="." instance=ExtResource("8_6prc5")]
+
+[node name="Grass_Block_LR" parent="." instance=ExtResource("9_c534r")]
+
+[node name="Grass_Block_ND" parent="." instance=ExtResource("10_sc4b8")]
+
+[node name="Grass_Block_NL" parent="." instance=ExtResource("11_rv8bj")]
+
+[node name="Grass_Block_NR" parent="." instance=ExtResource("12_k20oe")]
+
+[node name="Grass_Block_NU" parent="." instance=ExtResource("13_7gkax")]
+
+[node name="Grass_Block_UD" parent="." instance=ExtResource("14_kp7pe")]
+
+[node name="Grass_Block_UL" parent="." instance=ExtResource("15_ade44")]
+
+[node name="Grass_Block_UR" parent="." instance=ExtResource("16_rpqir")]

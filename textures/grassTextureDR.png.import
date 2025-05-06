@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfpd72sik3h3f"
-path="res://.godot/imported/grassTextureLC.png-f50061b1b21938e2c57f0362292bdd0a.ctex"
+uid="uid://65f2pi2ondxq"
+path="res://.godot/imported/grassTextureDR.png-d019ad03005b0950d87399da819653d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/grassTextureLC.png"
-dest_files=["res://.godot/imported/grassTextureLC.png-f50061b1b21938e2c57f0362292bdd0a.ctex"]
+source_file="res://textures/grassTextureDR.png"
+dest_files=["res://.godot/imported/grassTextureDR.png-d019ad03005b0950d87399da819653d2.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

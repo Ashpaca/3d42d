@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://balw08mtw5sx7"]
 
-[ext_resource type="Texture2D" uid="uid://bfpn8n1t5ae3w" path="res://textures/grassTextureDC.png" id="1_br8ad"]
+[ext_resource type="Texture2D" uid="uid://dvlt2dg7ihjss" path="res://textures/grassTextureDC.png" id="1_br8ad"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3hq7f"]
 shading_mode = 0

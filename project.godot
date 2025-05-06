@@ -25,6 +25,12 @@ window/stretch/mode="viewport"
 
 project/assembly_name="3D42D"
 
+[importer_defaults]
+
+texture={
+"detect_3d/compress_to": 0
+}
+
 [input]
 
 up={
