@@ -52,7 +52,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.13685, 0)
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/Guy"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 7.113, 7.137)
-projection = 1
 size = 6.145
 
 [node name="Full Block GridMap" type="GridMap" parent="SubViewportContainer/SubViewport"]

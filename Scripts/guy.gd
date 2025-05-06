@@ -4,8 +4,9 @@ extends CharacterBody3D
 const SPEED : float = 5.0
 const JUMP_VELOCITY : float = 4.5
 @onready var animator : AnimationPlayer = $Sprite3D/AnimationPlayer
-@onready var shadowCaster : RayCast3D = $RayCast3D
+@onready var shadowCaster : RayCast3D = $RayCasts/CenterRay
 @onready var shadow : Sprite3D = $Shadow
+@onready var JumpRays : Array[RayCast3D] = [$RayCasts/CenterRay,$RayCasts/BackRay,$RayCasts/RightRay,$RayCasts/FrontRay,$RayCasts/LeftRay]
 
 func _ready() -> void:
 	animator.play("stand_right")
@@ -26,12 +27,17 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
-	else:
+	elif is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+	else:
+		velocity.x = move_toward(velocity.x, 0, .1)
+		velocity.z = move_toward(velocity.z, 0, .1)
 	
 	handleAnimations(input_dir)
 	placeShadow()
+	if is_on_floor():
+		calculateJump()
 	
 	move_and_slide()
 	
@@ -65,5 +71,22 @@ func handleAnimations(inputVector : Vector2) -> void:
 		
 func placeShadow() -> void:
 	shadow.global_position = shadowCaster.get_collision_point() + Vector3(0, 0.1, 0)
+	
+func calculateJump() -> void:
+	var raysOverEdge : Array[RayCast3D] = []
+	var avgPoint : Vector3 = Vector3.ZERO
+	for ray in JumpRays:
+		if ray.is_colliding() and ((ray.global_position - ray.get_collision_point()).length_squared() > 1 or (ray.global_position - ray.get_collision_point()).length_squared() > 1):
+			raysOverEdge.append(ray)
+			avgPoint += ray.position
+	var numPoints : int = len(raysOverEdge)
+	if numPoints < 5 and numPoints > 2:
+		velocity += avgPoint.normalized() * 5
+		velocity.y = JUMP_VELOCITY
+	elif numPoints < 3:
+		velocity += -avgPoint.normalized() * 1
+	print(len(raysOverEdge))
+		
+			
 		
 		
