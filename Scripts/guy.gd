@@ -3,10 +3,14 @@ extends CharacterBody3D
 
 const SPEED : float = 5.0
 const JUMP_VELOCITY : float = 2.5
+const JUMP_COOLDOWN : float = 0.5
 @onready var animator : AnimationPlayer = $Sprite3D/AnimationPlayer
 @onready var shadowCaster : RayCast3D = $RayCasts/CenterRay
 @onready var shadow : Sprite3D = $Shadow
 @onready var jumpRays : Array[RayCast3D] = [$RayCasts/CenterRay,$RayCasts/BackRay,$RayCasts/RightRay,$RayCasts/FrontRay,$RayCasts/LeftRay]
+@onready var lowFacingRay : RayCast3D = $RayCasts/LowFacing
+@onready var highFacingRay : RayCast3D = $RayCasts/HighFacing
+var timeSinceJump : float = 0.0
 
 func _ready() -> void:
 	animator.play("stand_right")
@@ -33,9 +37,11 @@ func _physics_process(delta: float) -> void:
 	
 	handleAnimations(input_dir)
 	placeShadow()
-	if is_on_floor():
+	if is_on_floor() and timeSinceJump > JUMP_COOLDOWN:
 		calculateJump(direction)
-	
+		jumpUp()
+	placeFacingRays(direction)
+	timeSinceJump += delta
 	move_and_slide()
 	
 	for collisionID in range(get_slide_collision_count()):
@@ -69,7 +75,7 @@ func handleAnimations(inputVector : Vector2) -> void:
 func placeShadow() -> void:
 	shadow.global_position = shadowCaster.get_collision_point() + Vector3(0, 0.1, 0)
 	
-func calculateJump(inputVector : Vector3) -> void:
+func calculateJump(direction : Vector3) -> void:
 	var raysOverEdge : Array[RayCast3D] = []
 	var avgPoint : Vector3 = Vector3.ZERO
 	for ray in jumpRays:
@@ -77,7 +83,7 @@ func calculateJump(inputVector : Vector3) -> void:
 			raysOverEdge.append(ray)
 			avgPoint += ray.position
 	var numPoints : int = len(raysOverEdge)
-	if numPoints < 5 and numPoints > 2 and inputVector.dot(avgPoint) > 0:
+	if numPoints < 5 and numPoints > 2 and direction.dot(avgPoint) > 0:
 		velocity += avgPoint.normalized() * 5
 		velocity.y = JUMP_VELOCITY
 	elif numPoints < 5 and numPoints > 2:
@@ -85,6 +91,11 @@ func calculateJump(inputVector : Vector3) -> void:
 	elif numPoints < 3:
 		velocity -= avgPoint.normalized() * 1
 		
-			
-		
-		
+func jumpUp():
+	if lowFacingRay.is_colliding() and not highFacingRay.is_colliding():
+		velocity.y = JUMP_VELOCITY
+		timeSinceJump = 0.0
+
+func placeFacingRays(direction : Vector3):
+	lowFacingRay.target_position = direction * 0.4
+	highFacingRay.target_position = direction * 0.4

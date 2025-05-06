@@ -218,6 +218,13 @@ target_position = Vector3(0, -10, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33, 0, 0)
 target_position = Vector3(0, -10, 0)
 
+[node name="LowFacing" type="RayCast3D" parent="RayCasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.315494, 0)
+target_position = Vector3(0.4, 0, 0)
+
+[node name="HighFacing" type="RayCast3D" parent="RayCasts"]
+target_position = Vector3(0.4, 0, 0)
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 7.113, 7.137)
 doppler_tracking = 2
