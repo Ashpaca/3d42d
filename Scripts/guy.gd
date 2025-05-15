@@ -1,4 +1,4 @@
-extends CharacterBody3D
+class_name Guy extends CharacterBody3D
 
 
 const SPEED : float = 5.0
@@ -11,23 +11,23 @@ const JUMP_COOLDOWN : float = 0.5
 @onready var lowFacingRay : RayCast3D = $RayCasts/LowFacing
 @onready var highFacingRay : RayCast3D = $RayCasts/HighFacing
 var timeSinceJump : float = 0.0
+var inputDirection : Vector3 = Vector3.ZERO
 
 func _ready() -> void:
 	animator.play("stand_right")
+
+func _process(_delta: float) -> void:
+	var input_dir : Vector2 = Input.get_vector("left", "right", "up", "down")
+	inputDirection = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir : Vector2 = Input.get_vector("left", "right", "up", "down")
-	var direction : Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+	if inputDirection:
+		velocity.x = inputDirection.x * SPEED
+		velocity.z = inputDirection.z * SPEED
 	elif is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
@@ -35,12 +35,12 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, .1)
 		velocity.z = move_toward(velocity.z, 0, .1)
 	
-	handleAnimations(input_dir)
+	handleAnimations(inputDirection)
 	placeShadow()
 	if is_on_floor() and timeSinceJump > JUMP_COOLDOWN:
-		calculateJump(direction)
+		calculateJump(inputDirection)
 		jumpUp()
-	placeFacingRays(direction)
+	placeFacingRays(inputDirection)
 	timeSinceJump += delta
 	move_and_slide()
 	
@@ -50,8 +50,8 @@ func _physics_process(delta: float) -> void:
 			body.apply_central_force((body.global_position - Vector3(global_position.x, global_position.y - .5, global_position.z)).normalized().snapped(Vector3(1, 1, 1)) * 200)
 			
 
-func handleAnimations(inputVector : Vector2) -> void:
-	if inputVector.length_squared() < .1:
+func handleAnimations(direction : Vector3) -> void:
+	if direction.length_squared() < .1:
 		match animator.current_animation:
 			"walk_left":
 				animator.play("stand_left")
@@ -61,13 +61,13 @@ func handleAnimations(inputVector : Vector2) -> void:
 				animator.play("stand_up")
 			"walk_down":
 				animator.play("stand_down")
-	elif abs(inputVector[0]) > abs(inputVector[1]):
-		if inputVector[0] > 0:
+	elif abs(direction[0]) > abs(direction[2]):
+		if direction[0] > 0:
 			animator.play("walk_right")
 		else:
 			animator.play("walk_left")
 	else:
-		if inputVector[1] > 0:
+		if direction[2] > 0:
 			animator.play("walk_up")
 		else:
 			animator.play("walk_down")
@@ -93,7 +93,7 @@ func calculateJump(direction : Vector3) -> void:
 		
 func jumpUp():
 	if lowFacingRay.is_colliding() and not highFacingRay.is_colliding():
-		velocity.y = JUMP_VELOCITY
+		velocity.y = JUMP_VELOCITY * 1.2
 		timeSinceJump = 0.0
 
 func placeFacingRays(direction : Vector3):
