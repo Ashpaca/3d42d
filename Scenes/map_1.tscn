@@ -1,19 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://d28vpusweiaea"]
+[gd_scene load_steps=5 format=3 uid="uid://d28vpusweiaea"]
 
 [ext_resource type="Script" path="res://Scripts/map.gd" id="1_7ss24"]
 [ext_resource type="MeshLibrary" uid="uid://mu0r1j0lvt41" path="res://meshFull5.tres" id="1_w4kua"]
 [ext_resource type="MeshLibrary" uid="uid://cpvyk4vyubyf3" path="res://meshHalf2.tres" id="2_fjf5p"]
-[ext_resource type="Texture2D" uid="uid://dntpq3rhn7s1j" path="res://textures/Crate.png" id="3_l7g05"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_wqpdk"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ashad"]
-albedo_texture = ExtResource("3_l7g05")
-albedo_texture_force_srgb = true
-texture_filter = 0
-
-[sub_resource type="BoxMesh" id="BoxMesh_1hpig"]
-material = SubResource("StandardMaterial3D_ashad")
+[ext_resource type="PackedScene" uid="uid://d3lwnn7w6jgcg" path="res://Scenes/box.tscn" id="4_a74ky"]
 
 [node name="Map_1" type="Node3D"]
 script = ExtResource("1_7ss24")
@@ -42,15 +32,5 @@ metadata/_editor_floor_ = Vector3(0, 8, 0)
 
 [node name="Entities" type="Node3D" parent="."]
 
-[node name="box" type="RigidBody3D" parent="Entities"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.20845, 4.6906, -9.83879)
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
-mass = 5.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Entities/box"]
-shape = SubResource("BoxShape3D_wqpdk")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Entities/box"]
-mesh = SubResource("BoxMesh_1hpig")
+[node name="box" parent="Entities" instance=ExtResource("4_a74ky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1805, 2.7689, 4.01644)

@@ -12,13 +12,26 @@ const JUMP_COOLDOWN : float = 0.5
 @onready var highFacingRay : RayCast3D = $RayCasts/HighFacing
 var timeSinceJump : float = 0.0
 var inputDirection : Vector3 = Vector3.ZERO
+var hasJustPressedInteract : bool = false
+var isPressingInteract : bool = false
+var pushPullObject : PushPull = null
 
 func _ready() -> void:
 	animator.play("stand_right")
 
 func _process(_delta: float) -> void:
 	var input_dir : Vector2 = Input.get_vector("left", "right", "up", "down")
-	inputDirection = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if not pushPullObject:
+		inputDirection = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	else:
+		if abs(global_position.x - pushPullObject.global_position.x) > abs(global_position.z - pushPullObject.global_position.z):
+			inputDirection = (transform.basis * Vector3(input_dir.x, 0, 0)).normalized()
+		else:
+			inputDirection = (transform.basis * Vector3(0, 0, input_dir.y)).normalized()
+			
+	if Input.is_action_just_pressed("interact"):
+		hasJustPressedInteract = true
+	isPressingInteract = Input.is_action_pressed("interact")
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -39,16 +52,43 @@ func _physics_process(delta: float) -> void:
 	placeShadow()
 	if is_on_floor() and timeSinceJump > JUMP_COOLDOWN:
 		calculateJump(inputDirection)
-		jumpUp()
+		jumpUp(inputDirection)
+	
+	if hasJustPressedInteract:
+		hasJustPressedInteract = false
+		facingPushPullObject()
+	movePushPullObject(inputDirection)
+			
 	placeFacingRays(inputDirection)
 	timeSinceJump += delta
 	move_and_slide()
 	
+	'''
 	for collisionID in range(get_slide_collision_count()):
 		if get_slide_collision(collisionID).get_collider() is RigidBody3D:
 			var body : RigidBody3D = get_slide_collision(collisionID).get_collider() as RigidBody3D
 			body.apply_central_force((body.global_position - Vector3(global_position.x, global_position.y - .5, global_position.z)).normalized().snapped(Vector3(1, 1, 1)) * 200)
+	#'''
 			
+
+func movePushPullObject(direction : Vector3) -> void:
+	if not pushPullObject:
+		return
+	var dist : Vector3 = (pushPullObject.global_position - global_position)
+	if dist.dot(direction) > .1:
+		pushPullObject.apply_central_force(direction * 100)
+	elif dist.dot(direction) < -.1:
+		pushPullObject.apply_central_force(direction * 100)
+		
+		 
+
+func facingPushPullObject() -> bool:
+	var facingObject : Object = highFacingRay.get_collider()
+	if facingObject is PushPull and not pushPullObject:
+		pushPullObject = facingObject
+		return true
+	pushPullObject = null
+	return false
 
 func handleAnimations(direction : Vector3) -> void:
 	if direction.length_squared() < .1:
@@ -91,11 +131,13 @@ func calculateJump(direction : Vector3) -> void:
 	elif numPoints < 3:
 		velocity -= avgPoint.normalized() * 1
 		
-func jumpUp():
-	if lowFacingRay.is_colliding() and not highFacingRay.is_colliding():
+func jumpUp(direction : Vector3):
+	if lowFacingRay.is_colliding() and not highFacingRay.is_colliding() and direction.dot(lowFacingRay.get_collision_point() - global_position) > 0:
 		velocity.y = JUMP_VELOCITY * 1.2
 		timeSinceJump = 0.0
 
 func placeFacingRays(direction : Vector3):
-	lowFacingRay.target_position = direction * 0.4
-	highFacingRay.target_position = direction * 0.4
+	if direction.length_squared() < 0.1:
+		return
+	lowFacingRay.target_position = direction * 0.7
+	highFacingRay.target_position = direction * 0.7

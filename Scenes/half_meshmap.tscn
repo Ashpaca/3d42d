@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dasbg4qrc8jo8"]
 
-[ext_resource type="PackedScene" uid="uid://cwvblixb2iau5" path="res://Scenes/rampLower.tscn" id="1_dijep"]
-[ext_resource type="PackedScene" uid="uid://c6f4xd8g7icti" path="res://Scenes/rampUpper.tscn" id="2_n2x2g"]
-[ext_resource type="PackedScene" uid="uid://82acmvnxuyny" path="res://Scenes/halfGrass.tscn" id="3_6uivn"]
+[ext_resource type="PackedScene" uid="uid://cwvblixb2iau5" path="res://Scenes/Block Scenes/rampLower.tscn" id="1_dijep"]
+[ext_resource type="PackedScene" uid="uid://c6f4xd8g7icti" path="res://Scenes/Block Scenes/rampUpper.tscn" id="2_n2x2g"]
+[ext_resource type="PackedScene" uid="uid://82acmvnxuyny" path="res://Scenes/Block Scenes/halfGrass.tscn" id="3_6uivn"]
 
 [node name="half meshmap" type="Node3D"]
 
