@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://ckmrhs3cl44wb"]
+[gd_scene load_steps=16 format=3 uid="uid://ckmrhs3cl44wb"]
 
-[ext_resource type="Script" path="res://Scripts/guy.gd" id="1_75l4f"]
+[ext_resource type="Script" uid="uid://cov2j3c77jbfw" path="res://Scripts/guy.gd" id="1_75l4f"]
 [ext_resource type="Texture2D" uid="uid://vkv54g0olxr7" path="res://Sprites/GuySpriteSheet.png" id="2_1123v"]
 [ext_resource type="Texture2D" uid="uid://dym4585aujumq" path="res://icon.svg" id="3_v6te3"]
 
@@ -151,20 +151,24 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_08vuc"]
 _data = {
-"RESET": SubResource("Animation_yingm"),
-"stand_down": SubResource("Animation_bm0vy"),
-"stand_left": SubResource("Animation_o37cw"),
-"stand_right": SubResource("Animation_1kc22"),
-"stand_up": SubResource("Animation_y4bq7"),
-"walk_down": SubResource("Animation_cp3ux"),
-"walk_left": SubResource("Animation_1m50p"),
-"walk_right": SubResource("Animation_sfghh"),
-"walk_up": SubResource("Animation_suqu8")
+&"RESET": SubResource("Animation_yingm"),
+&"stand_down": SubResource("Animation_bm0vy"),
+&"stand_left": SubResource("Animation_o37cw"),
+&"stand_right": SubResource("Animation_1kc22"),
+&"stand_up": SubResource("Animation_y4bq7"),
+&"walk_down": SubResource("Animation_cp3ux"),
+&"walk_left": SubResource("Animation_1m50p"),
+&"walk_right": SubResource("Animation_sfghh"),
+&"walk_up": SubResource("Animation_suqu8")
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vwnso"]
 radius = 0.33
 height = 1.35639
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_s5xhn"]
+radius = 0.2
+height = 1.0
 
 [node name="Guy" type="CharacterBody3D"]
 axis_lock_angular_x = true
@@ -185,7 +189,7 @@ frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite3D"]
 libraries = {
-"": SubResource("AnimationLibrary_08vuc")
+&"": SubResource("AnimationLibrary_08vuc")
 }
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -224,3 +228,7 @@ target_position = Vector3(0.4, 0, 0)
 
 [node name="HighFacing" type="RayCast3D" parent="RayCasts"]
 target_position = Vector3(0.4, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 2
+mesh = SubResource("CapsuleMesh_s5xhn")

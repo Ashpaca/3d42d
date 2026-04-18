@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b1mmfg1f5qrip"]
 
-[ext_resource type="Script" path="res://Scripts/level.gd" id="1_mht88"]
+[ext_resource type="Script" uid="uid://bacuet1snlf0y" path="res://Scripts/level.gd" id="1_mht88"]
 [ext_resource type="PackedScene" uid="uid://ckmrhs3cl44wb" path="res://Scenes/guy.tscn" id="1_v515f"]
 [ext_resource type="PackedScene" uid="uid://d28vpusweiaea" path="res://Scenes/map_1.tscn" id="2_e21m5"]
 
@@ -32,6 +32,7 @@ render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 7.113, 7.137)
+cull_mask = 1048573
 doppler_tracking = 2
 projection = 1
 size = 6.145
@@ -41,9 +42,16 @@ environment = SubResource("Environment_7mid4")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.75, -0.43301, 0, 0, 0)
+visible = false
 shadow_enabled = true
 
 [node name="Map_1" parent="." instance=ExtResource("2_e21m5")]
 
 [node name="Guy" parent="." instance=ExtResource("1_v515f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.13685, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.77888936, -0.37855312, 0.50002885, 0, 0.7972891, 0.6035977, -0.6271613, -0.47013584, 0.621, -2.37038, 4.0349345, 6.5628333)
+layers = 3
+light_energy = 11.16
+shadow_enabled = true
